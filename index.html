@@ -193,7 +193,7 @@
         .hero-bg {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(8,8,8,0.45) 0%, rgba(8,8,8,0.62) 60%, rgba(8,8,8,0.90) 100%), url('hero.jpeg') center / cover no-repeat;
+            background: linear-gradient(180deg, rgba(8,8,8,0.45) 0%, rgba(8,8,8,0.62) 60%, rgba(8,8,8,0.90) 100%), url('https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=1920&q=75') center / cover no-repeat;
             transform: scale(1.04);
             transition: transform 8s linear;
         }
@@ -530,9 +530,10 @@
         }
 
         .work-layout {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr 380px;
             gap: 3rem;
+            align-items: start;
         }
 
         /* masonry gallery */
@@ -574,15 +575,13 @@
             opacity: 1;
         }
 
-        /* reviews panel — horizontal strip */
+        /* reviews panel */
         .reviews-panel {
-            display: grid;
-            grid-template-columns: auto 1fr 1fr auto;
-            gap: 1.4rem;
-            align-items: start;
-            padding: 2rem;
-            border: 1px solid var(--gold-border);
-            background: var(--black);
+            position: sticky;
+            top: 90px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
         }
 
         .reviews-header {
@@ -764,178 +763,6 @@
             line-height: 1;
             font-family: var(--font-b);
             font-weight: 300;
-        }
-
-        /* ─── BEFORE / AFTER SLIDERS ────────────────────────────────────── */
-        .ba-section {
-            background: var(--black);
-            border-top: 1px solid var(--gold-border);
-        }
-
-        .ba-intro {
-            font-size: 0.9rem;
-            line-height: 1.75;
-            color: rgba(255,255,255,0.55);
-            max-width: 560px;
-            margin-bottom: 3.5rem;
-        }
-
-        .ba-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-        }
-
-        .ba-wrap {
-            position: relative;
-            overflow: hidden;
-            cursor: col-resize;
-            user-select: none;
-            aspect-ratio: 4/3;
-            background: var(--black-3);
-            border: 1px solid var(--gold-border);
-        }
-
-        /* placeholder when no images uploaded */
-        .ba-placeholder {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            color: var(--muted);
-            font-size: 0.72rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            pointer-events: none;
-        }
-
-            .ba-placeholder svg {
-                width: 32px;
-                height: 32px;
-                color: var(--gold-border);
-            }
-
-        .ba-img-before,
-        .ba-img-after {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* after image clipped by slider position */
-        .ba-img-after {
-            clip-path: inset(0 50% 0 0);
-        }
-
-        /* divider line */
-        .ba-divider {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 2px;
-            background: var(--gold);
-            transform: translateX(-50%);
-            pointer-events: none;
-            z-index: 3;
-        }
-
-        /* handle circle */
-        .ba-handle {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 4;
-            pointer-events: none;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.5);
-        }
-
-            .ba-handle svg {
-                width: 20px;
-                height: 20px;
-                color: var(--black);
-            }
-
-        /* labels */
-        .ba-label {
-            position: absolute;
-            bottom: 10px;
-            font-size: 0.6rem;
-            font-weight: 500;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            padding: 3px 8px;
-            border-radius: 2px;
-            z-index: 5;
-            pointer-events: none;
-        }
-
-        .ba-label-before {
-            left: 10px;
-            background: rgba(8,8,8,0.75);
-            color: rgba(255,255,255,0.7);
-        }
-
-        .ba-label-after {
-            right: 10px;
-            background: var(--gold);
-            color: var(--black);
-        }
-
-        /* hint text on first load */
-        .ba-hint {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 0.58rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.45);
-            white-space: nowrap;
-            z-index: 6;
-            pointer-events: none;
-            transition: opacity 0.3s;
-        }
-
-        .ba-wrap.touched .ba-hint {
-            opacity: 0;
-        }
-
-        /* caption below each slider */
-        .ba-caption {
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-top: 8px;
-            text-align: center;
-        }
-
-
-        @media (max-width: 900px) {
-            .ba-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .ba-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         /* ─── CONTACT ───────────────────────────────────────────────────── */
@@ -1200,14 +1027,104 @@
             }
         }
 
+        /* ─── BEFORE / AFTER SLIDER ────────────────────────────────────── */
+        .ba-slider {
+            position: relative;
+            overflow: hidden;
+            cursor: col-resize;
+            user-select: none;
+            --ba-pct: 50%;
+        }
+
+        .ba-before-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            filter: grayscale(0.35) brightness(0.85);
+            transition: filter 0.4s var(--ease);
+        }
+
+        .ba-after-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            clip-path: inset(0 calc(100% - var(--ba-pct)) 0 0);
+        }
+
+        .ba-slider:hover .ba-before-img {
+            filter: grayscale(0.1) brightness(0.9);
+        }
+
+        .ba-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: var(--ba-pct);
+            transform: translateX(-50%);
+            width: 2px;
+            background: var(--gold);
+            z-index: 4;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ba-btn {
+            width: 34px;
+            height: 34px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.6), 0 0 0 3px rgba(200,168,75,0.25);
+            flex-shrink: 0;
+        }
+
+            .ba-btn svg {
+                width: 14px;
+                height: 14px;
+                color: var(--black);
+            }
+
+        .ba-label {
+            position: absolute;
+            top: 0.55rem;
+            font-family: var(--font-b);
+            font-size: 0.58rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 0.25rem 0.6rem;
+            background: rgba(8,8,8,0.68);
+            backdrop-filter: blur(6px);
+            z-index: 3;
+            pointer-events: none;
+            border-radius: 1px;
+        }
+
+        .ba-lb { left: 0.6rem;  color: var(--muted); }
+        .ba-la { right: 0.6rem; color: var(--gold-light); }
+
         /* ─── RESPONSIVE ────────────────────────────────────────────────── */
         @media (max-width: 1100px) {
             .services-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
 
+            .work-layout {
+                grid-template-columns: 1fr;
+            }
+
             .reviews-panel {
-                grid-template-columns: 1fr 1fr;
+                position: static;
+            }
+
+            .gallery-columns {
+                columns: 2;
             }
         }
 
@@ -1343,7 +1260,7 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-down" onclick="scrollTo('#services')">
+        <div class="scroll-down" onclick="smoothScrollTo('#services')">
             <span>Scroll</span>
             <div class="scroll-arrow"></div>
         </div>
@@ -1450,111 +1367,79 @@
             <h2 class="section-title reveal reveal-d1">Our <em>Work</em></h2>
             <div class="section-rule reveal reveal-d2"></div>
 
-            <p class="ba-intro reveal reveal-d3">Drag the handle left and right to compare stonework before and after.</p>
-
             <div class="work-layout">
-                <!-- Before / After sliders grid -->
-                <div class="reveal">
-                    <div class="ba-grid">
-                        <div>
-                            <div class="ba-wrap" data-pair="0">
-                                <div class="ba-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg><span>Pair 1</span></div>
-                                <img class="ba-img-before" src="dom_przed.jpeg" alt="Before"><img class="ba-img-after" src="dom_po.jpeg" alt="After">
-                                <div class="ba-divider"></div>
-                                <div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4" /></svg></div>
-                                <span class="ba-label ba-label-before">Before</span><span class="ba-label ba-label-after">After</span>
-                                <span class="ba-hint">Hold &amp; drag</span>
-                            </div>
-                            <p class="ba-caption" data-caption="0">Project 1</p>
-                        </div>
-                        <div>
-                            <div class="ba-wrap" data-pair="1">
-                                <div class="ba-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg><span>Pair 2</span></div>
-                                <img class="ba-img-before" src="murek_przed.jpeg" alt="Before"><img class="ba-img-after" src="murek_po.jpeg" alt="After">
-                                <div class="ba-divider"></div>
-                                <div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4" /></svg></div>
-                                <span class="ba-label ba-label-before">Before</span><span class="ba-label ba-label-after">After</span>
-                                <span class="ba-hint">Hold &amp; drag</span>
-                            </div>
-                            <p class="ba-caption" data-caption="1">Project 2</p>
-                        </div>
-                        <div>
-                            <div class="ba-wrap" data-pair="2">
-                                <div class="ba-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg><span>Pair 3</span></div>
-                                <img class="ba-img-before" src="ogródv2_przed.jpeg" alt="Before"><img class="ba-img-after" src="ogródv2_po.jpeg" alt="After">
-                                <div class="ba-divider"></div>
-                                <div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4" /></svg></div>
-                                <span class="ba-label ba-label-before">Before</span><span class="ba-label ba-label-after">After</span>
-                                <span class="ba-hint">Hold &amp; drag</span>
-                            </div>
-                            <p class="ba-caption" data-caption="2">Project 3</p>
-                        </div>
-                        <div>
-                            <div class="ba-wrap" data-pair="3">
-                                <div class="ba-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg><span>Pair 4</span></div>
-                                <img class="ba-img-before" src="przed_odnowa.jpeg" alt="Before"><img class="ba-img-after" src="po_odnowie.jpeg" alt="After">
-                                <div class="ba-divider"></div>
-                                <div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4" /></svg></div>
-                                <span class="ba-label ba-label-before">Before</span><span class="ba-label ba-label-after">After</span>
-                                <span class="ba-hint">Hold &amp; drag</span>
-                            </div>
-                            <p class="ba-caption" data-caption="3">Project 4</p>
-                        </div>
-                        <div>
-                            <div class="ba-wrap" data-pair="4">
-                                <div class="ba-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg><span>Pair 5</span></div>
-                                <img class="ba-img-before" src="ogródv3_przed.jpeg" alt="Before"><img class="ba-img-after" src="ogródv3_po.jpeg" alt="After">
-                                <div class="ba-divider"></div>
-                                <div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4" /></svg></div>
-                                <span class="ba-label ba-label-before">Before</span><span class="ba-label ba-label-after">After</span>
-                                <span class="ba-hint">Hold &amp; drag</span>
-                            </div>
-                            <p class="ba-caption" data-caption="4">Project 5</p>
-                        </div>
-                        <div>
-                            <div class="ba-wrap" data-pair="5">
-                                <div class="ba-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg><span>Pair 6</span></div>
-                                <img class="ba-img-before" src="murekv2_przed.jpeg" alt="Before"><img class="ba-img-after" src="murekv2_po.jpeg" alt="After">
-                                <div class="ba-divider"></div>
-                                <div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4" /></svg></div>
-                                <span class="ba-label ba-label-before">Before</span><span class="ba-label ba-label-after">After</span>
-                                <span class="ba-hint">Hold &amp; drag</span>
-                            </div>
-                            <p class="ba-caption" data-caption="5">Project 6</p>
-                        </div>
-                        <div>
-                            <div class="ba-wrap" data-pair="6">
-                                <div class="ba-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg><span>Pair 7</span></div>
-                                <img class="ba-img-before" src="schody_przed.jpeg" alt="Before"><img class="ba-img-after" src="schody_po.jpeg" alt="After">
-                                <div class="ba-divider"></div>
-                                <div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4" /></svg></div>
-                                <span class="ba-label ba-label-before">Before</span><span class="ba-label ba-label-after">After</span>
-                                <span class="ba-hint">Hold &amp; drag</span>
-                            </div>
-                            <p class="ba-caption" data-caption="6">Project 7</p>
-                        </div>
-                        <div>
-                            <div class="ba-wrap" data-pair="7">
-                                <div class="ba-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg><span>Pair 8</span></div>
-                                <img class="ba-img-before" src="wejście_przed.jpeg" alt="Before"><img class="ba-img-after" src="wejście_po.jpeg" alt="After">
-                                <div class="ba-divider"></div>
-                                <div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4" /></svg></div>
-                                <span class="ba-label ba-label-before">Before</span><span class="ba-label ba-label-after">After</span>
-                                <span class="ba-hint">Hold &amp; drag</span>
-                            </div>
-                            <p class="ba-caption" data-caption="7">Project 8</p>
-                        </div>
-                        <div>
-                            <div class="ba-wrap" data-pair="8">
-                                <div class="ba-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg><span>Pair 9</span></div>
-                                <img class="ba-img-before" src="ogród_przed.jpeg" alt="Before"><img class="ba-img-after" src="ogród_po.jpeg" alt="After">
-                                <div class="ba-divider"></div>
-                                <div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4" /></svg></div>
-                                <span class="ba-label ba-label-before">Before</span><span class="ba-label ba-label-after">After</span>
-                                <span class="ba-hint">Hold &amp; drag</span>
-                            </div>
-                            <p class="ba-caption" data-caption="8">Project 9</p>
-                        </div>
+                <!-- Gallery -->
+                <div class="gallery-columns reveal">
+                    <!--
+                      ┌──────────────────────────────────────────────────────┐
+                      │  REPLACE these src attributes with your actual       │
+                      │  project photos. Recommended sizes:                  │
+                      │  Tall images: 600×900 px                             │
+                      │  Wide images: 600×400 px                             │
+                      └──────────────────────────────────────────────────────┘
+                    -->
+                    <div class="gallery-item ba-slider">
+                        <img class="ba-before-img" src="https://raw.githubusercontent.com/FilipRozz/arch-masonry/main/dom_przed.jpeg" alt="Before – House stonework" loading="lazy">
+                        <img class="ba-after-img"  src="https://raw.githubusercontent.com/FilipRozz/arch-masonry/main/dom_po.jpeg"   alt="After – House stonework">
+                        <div class="ba-handle"><div class="ba-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 7L3 12L8 17M16 7L21 12L16 17"/></svg></div></div>
+                        <span class="ba-label ba-lb">Before</span>
+                        <span class="ba-label ba-la">After</span>
+                    </div>
+                    <div class="gallery-item ba-slider">
+                        <img class="ba-before-img" src="https://raw.githubusercontent.com/FilipRozz/arch-masonry/main/murek_przed.jpeg" alt="Before – Stone wall" loading="lazy">
+                        <img class="ba-after-img"  src="https://raw.githubusercontent.com/FilipRozz/arch-masonry/main/murek_po.jpeg"   alt="After – Stone wall">
+                        <div class="ba-handle"><div class="ba-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 7L3 12L8 17M16 7L21 12L16 17"/></svg></div></div>
+                        <span class="ba-label ba-lb">Before</span>
+                        <span class="ba-label ba-la">After</span>
+                    </div>
+                    <div class="gallery-item ba-slider">
+                        <img class="ba-before-img" src="https://raw.githubusercontent.com/FilipRozz/arch-masonry/main/murekv2_przed.jpeg" alt="Before – Stone wall restoration" loading="lazy">
+                        <img class="ba-after-img"  src="https://raw.githubusercontent.com/FilipRozz/arch-masonry/main/murekv2_po.jpeg"   alt="After – Stone wall restoration">
+                        <div class="ba-handle"><div class="ba-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 7L3 12L8 17M16 7L21 12L16 17"/></svg></div></div>
+                        <span class="ba-label ba-lb">Before</span>
+                        <span class="ba-label ba-la">After</span>
+                    </div>
+                    <div class="gallery-item ba-slider">
+                        <img class="ba-before-img" src="https://raw.githubusercontent.com/FilipRozz/arch-masonry/main/odr%C3%B3d_przed.jpeg" alt="Before – Garden stonework" loading="lazy">
+                        <img class="ba-after-img"  src="https://raw.githubusercontent.com/FilipRozz/arch-masonry/main/ogr%C3%B3d_po.jpeg"    alt="After – Garden stonework">
+                        <div class="ba-handle"><div class="ba-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 7L3 12L8 17M16 7L21 12L16 17"/></svg></div></div>
+                        <span class="ba-label ba-lb">Before</span>
+                        <span class="ba-label ba-la">After</span>
+                    </div>
+                    <div class="gallery-item ba-slider">
+                        <img class="ba-before-img" src="https://raw.githubusercontent.com/FilipRozz/arch-masonry/main/ogr%C3%B3dv2_przed.jpeg" alt="Before – Garden wall" loading="lazy">
+                        <img class="ba-after-img"  src="https://raw.githubusercontent.com/FilipRozz/arch-masonry/main/ogr%C3%B3dv2_po.jpeg"   alt="After – Garden wall">
+                        <div class="ba-handle"><div class="ba-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 7L3 12L8 17M16 7L21 12L16 17"/></svg></div></div>
+                        <span class="ba-label ba-lb">Before</span>
+                        <span class="ba-label ba-la">After</span>
+                    </div>
+                    <div class="gallery-item ba-slider">
+                        <img class="ba-before-img" src="https://raw.githubusercontent.com/FilipRozz/arch-masonry/main/ogr%C3%B3dv3_przed.jpeg" alt="Before – Garden project" loading="lazy">
+                        <img class="ba-after-img"  src="https://raw.githubusercontent.com/FilipRozz/arch-masonry/main/ogr%C3%B3dv3_po.jpeg"   alt="After – Garden project">
+                        <div class="ba-handle"><div class="ba-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 7L3 12L8 17M16 7L21 12L16 17"/></svg></div></div>
+                        <span class="ba-label ba-lb">Before</span>
+                        <span class="ba-label ba-la">After</span>
+                    </div>
+                    <div class="gallery-item ba-slider">
+                        <img class="ba-before-img" src="https://raw.githubusercontent.com/FilipRozz/arch-masonry/main/przed_odnowa.jpeg" alt="Before – Stone restoration" loading="lazy">
+                        <img class="ba-after-img"  src="https://raw.githubusercontent.com/FilipRozz/arch-masonry/main/po_odnowie.jpeg"  alt="After – Stone restoration">
+                        <div class="ba-handle"><div class="ba-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 7L3 12L8 17M16 7L21 12L16 17"/></svg></div></div>
+                        <span class="ba-label ba-lb">Before</span>
+                        <span class="ba-label ba-la">After</span>
+                    </div>
+                    <div class="gallery-item ba-slider">
+                        <img class="ba-before-img" src="https://raw.githubusercontent.com/FilipRozz/arch-masonry/main/schody_przed.jpeg" alt="Before – Steps repointing" loading="lazy">
+                        <img class="ba-after-img"  src="https://raw.githubusercontent.com/FilipRozz/arch-masonry/main/schody_po.jpeg"   alt="After – Steps repointing">
+                        <div class="ba-handle"><div class="ba-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 7L3 12L8 17M16 7L21 12L16 17"/></svg></div></div>
+                        <span class="ba-label ba-lb">Before</span>
+                        <span class="ba-label ba-la">After</span>
+                    </div>
+                    <div class="gallery-item ba-slider">
+                        <img class="ba-before-img" src="https://raw.githubusercontent.com/FilipRozz/arch-masonry/main/wej%C5%9Bcie_przed.jpeg" alt="Before – Entrance stonework" loading="lazy">
+                        <img class="ba-after-img"  src="https://raw.githubusercontent.com/FilipRozz/arch-masonry/main/wej%C5%9Bcie_po.jpeg"   alt="After – Entrance stonework">
+                        <div class="ba-handle"><div class="ba-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 7L3 12L8 17M16 7L21 12L16 17"/></svg></div></div>
+                        <span class="ba-label ba-lb">Before</span>
+                        <span class="ba-label ba-la">After</span>
                     </div>
                 </div>
 
@@ -1583,21 +1468,21 @@
                     <div class="review-card">
                         <div class="review-top">
                             <div>
-                                <div class="reviewer-name">Helena Gascoyne</div>
-                                <div class="reviewer-location">Bristol</div>
+                                <div class="reviewer-name">Deborah</div>
+                                <div class="reviewer-location">BS5, Bristol</div>
                             </div>
                             <div class="review-stars">
                                 <span class="star">★</span><span class="star">★</span><span class="star">★</span>
                                 <span class="star">★</span><span class="star">★</span>
                             </div>
                         </div>
-                        <p class="review-text">Arch Masonry did a fabulous job rebuilding my old stone wall and I couldn’t be happier with the result. The quality of the work is outstanding. Both the guys carrying out the work were reliable, hard-working and easy to deal with, and left everything tidy. Highly recommend them.</p>
+                        <p class="review-text">Absolute magicians taking my house from a pure mess to a beautiful haven</p>
                     </div>
 
                     <div class="review-card">
                         <div class="review-top">
                             <div>
-                                <div class="reviewer-name">Tim Kirkwood</div>
+                                <div class="reviewer-name">MyBuilder Platform</div>
                                 <div class="reviewer-location">Bristol</div>
                             </div>
                             <div class="review-stars">
@@ -1605,7 +1490,7 @@
                                 <span class="star">★</span><span class="star">★</span>
                             </div>
                         </div>
-                        <p class="review-text">Can't recommend Marcin and his team highly enough. We had our cement render removed from the outside of our Cotswold stone house. There were some surprises underneath but Marcin kept us updated the whole time. The team worked really hard to get the work done quickly, and did a great job restoring the stone they could, and rendered the rest to a high standard. We are really happy with the outcome. Thanks guys!</p>
+                        <p class="review-text">Consistently rated 5 stars by verified customers on MyBuilder — one of Bristol's most trusted stone specialists.</p>
                     </div>
 
                     <a href="https://share.google/4DwbQrv7GQ8oRdHN0" target="_blank" rel="noopener" class="reviews-cta">
@@ -1803,7 +1688,7 @@
         });
 
         /* ─── SMOOTH SCROLL ───────────────────────────── */
-        function scrollTo(target) {
+        function smoothScrollTo(target) {
             const el = document.querySelector(target);
             if (el) el.scrollIntoView({ behavior: 'smooth' });
         }
@@ -1823,7 +1708,7 @@
         const heroBg = document.getElementById('heroBg');
         const heroImg = new Image();
         heroImg.onload = () => heroBg.classList.add('loaded');
-        heroImg.src = 'img/hero.jpg';
+        heroImg.src = 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=1920&q=75';
 
         /* ─── REVEAL ON SCROLL ────────────────────────── */
         const observer = new IntersectionObserver(
@@ -1833,7 +1718,7 @@
                     observer.unobserve(e.target);
                 }
             }),
-            { threshold: 0.12 }
+            { threshold: 0.05, rootMargin: '0px 0px -30px 0px' }
         );
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
@@ -1853,49 +1738,32 @@
             if (e.key === 'Escape') closeLightbox();
         });
 
-                });
+        /* ─── BEFORE / AFTER SLIDERS ─────────────────── */
+        function initBASliders() {
+            document.querySelectorAll('.ba-slider').forEach(slider => {
+                let dragging = false;
 
-        /* ─── BEFORE / AFTER SLIDER LOGIC ────────────── */
-        function initSlider(wrap) {
-            // already inited
-            if (wrap._baInited) return;
-            wrap._baInited = true;
+                function setPct(clientX) {
+                    const rect = slider.getBoundingClientRect();
+                    let pct = (clientX - rect.left) / rect.width * 100;
+                    pct = Math.min(Math.max(pct, 2), 98);
+                    slider.style.setProperty('--ba-pct', pct.toFixed(2) + '%');
+                }
 
-            const after = wrap.querySelector('.ba-img-after');
-            const divider = wrap.querySelector('.ba-divider');
-            const handle = wrap.querySelector('.ba-handle');
+                /* Mouse */
+                slider.addEventListener('mousedown', e => { dragging = true; setPct(e.clientX); });
+                window.addEventListener('mousemove', e => { if (dragging) setPct(e.clientX); });
+                window.addEventListener('mouseup',   () => { dragging = false; });
 
-            function setPos(x) {
-                const rect = wrap.getBoundingClientRect();
-                let pct = Math.max(0, Math.min(1, (x - rect.left) / rect.width));
-                const pctR = Math.round((1 - pct) * 10000) / 100;
-                after.style.clipPath = `inset(0 ${pctR}% 0 0)`;
-                divider.style.left = `${pct * 100}%`;
-                handle.style.left = `${pct * 100}%`;
-                wrap.classList.add('touched');
-            }
-
-            // mouse
-            wrap.addEventListener('mousedown', e => {
-                e.preventDefault();
-                setPos(e.clientX);
-                const move = e2 => setPos(e2.clientX);
-                const up = () => { window.removeEventListener('mousemove', move); window.removeEventListener('mouseup', up); };
-                window.addEventListener('mousemove', move);
-                window.addEventListener('mouseup', up);
+                /* Touch */
+                slider.addEventListener('touchstart', e => { dragging = true; setPct(e.touches[0].clientX); }, { passive: true });
+                window.addEventListener('touchmove',  e => { if (dragging) setPct(e.touches[0].clientX); }, { passive: true });
+                window.addEventListener('touchend',   () => { dragging = false; });
             });
-
-            // touch
-            wrap.addEventListener('touchstart', e => {
-                const move = e2 => { e2.preventDefault(); setPos(e2.touches[0].clientX); };
-                const end = () => { window.removeEventListener('touchmove', move); window.removeEventListener('touchend', end); };
-                window.addEventListener('touchmove', move, { passive: false });
-                window.addEventListener('touchend', end);
-                setPos(e.touches[0].clientX);
-            }, { passive: true });
         }
+        initBASliders();
 
-
+        /* ─── CONTACT FORM ────────────────────────────── */
         function handleSubmit(e) {
             e.preventDefault();
             const form = document.getElementById('contactForm');
