@@ -530,10 +530,9 @@
         }
 
         .work-layout {
-            display: grid;
-            grid-template-columns: 1fr 380px;
+            display: flex;
+            flex-direction: column;
             gap: 3rem;
-            align-items: start;
         }
 
         /* masonry gallery */
@@ -575,13 +574,14 @@
             opacity: 1;
         }
 
-        /* reviews panel */
         .reviews-panel {
-            position: sticky;
-            top: 90px;
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
+            display: grid;
+            grid-template-columns: auto 1fr 1fr auto;
+            gap: 1.4rem;
+            align-items: start;
+            padding: 2rem;
+            border: 1px solid var(--gold-border);
+            background: var(--black);
         }
 
         .reviews-header {
@@ -1285,52 +1285,20 @@
             <h2 class="section-title reveal reveal-d1">Our <em>Work</em></h2>
             <div class="section-rule reveal reveal-d2"></div>
 
+            <p class="ba-intro reveal reveal-d3">Drag the handle left and right to compare stonework before and after.</p>
+
             <div class="work-layout">
-                <!-- Gallery -->
-                <div class="gallery-columns reveal">
-                    <!--
-                      ┌──────────────────────────────────────────────────────┐
-                      │  REPLACE these src attributes with your actual       │
-                      │  project photos. Recommended sizes:                  │
-                      │  Tall images: 600×900 px                             │
-                      │  Wide images: 600×400 px                             │
-                      └──────────────────────────────────────────────────────┘
-                    -->
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="https://placehold.co/600x900/141414/c8a84b?text=Project+Photo" alt="Stone walling project" loading="lazy">
-                        <div class="gallery-overlay"></div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="https://placehold.co/600x420/181818/c8a84b?text=Project+Photo" alt="Repointing work" loading="lazy">
-                        <div class="gallery-overlay"></div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="https://placehold.co/600x500/111111/c8a84b?text=Project+Photo" alt="Stone cleaning" loading="lazy">
-                        <div class="gallery-overlay"></div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="https://placehold.co/600x700/181818/c8a84b?text=Project+Photo" alt="Restoration project" loading="lazy">
-                        <div class="gallery-overlay"></div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="https://placehold.co/600x420/141414/c8a84b?text=Project+Photo" alt="New build stonework" loading="lazy">
-                        <div class="gallery-overlay"></div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="https://placehold.co/600x380/111111/c8a84b?text=Project+Photo" alt="Stone wall detail" loading="lazy">
-                        <div class="gallery-overlay"></div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="https://placehold.co/600x560/181818/c8a84b?text=Project+Photo" alt="Masonry project" loading="lazy">
-                        <div class="gallery-overlay"></div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="https://placehold.co/600x800/141414/c8a84b?text=Project+Photo" alt="Stone restoration" loading="lazy">
-                        <div class="gallery-overlay"></div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="https://placehold.co/600x440/111111/c8a84b?text=Project+Photo" alt="Stonework close-up" loading="lazy">
-                        <div class="gallery-overlay"></div>
+                <div class="reveal">
+                    <div class="ba-grid">
+                        <div><div class="ba-wrap" data-pair="0"><div class="ba-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg><span>Pair 1</span></div><img class="ba-img-before" src="dom_przed.jpeg" alt="Before"><img class="ba-img-after" src="dom_po.jpeg" alt="After"><div class="ba-divider"></div><div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4" /></svg></div><span class="ba-label ba-label-before">Before</span><span class="ba-label ba-label-after">After</span><span class="ba-hint">Hold &amp; drag</span></div><p class="ba-caption">Project 1</p></div>
+                        <div><div class="ba-wrap" data-pair="1"><div class="ba-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg><span>Pair 2</span></div><img class="ba-img-before" src="murek_przed.jpeg" alt="Before"><img class="ba-img-after" src="murek_po.jpeg" alt="After"><div class="ba-divider"></div><div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4" /></svg></div><span class="ba-label ba-label-before">Before</span><span class="ba-label ba-label-after">After</span><span class="ba-hint">Hold &amp; drag</span></div><p class="ba-caption">Project 2</p></div>
+                        <div><div class="ba-wrap" data-pair="2"><div class="ba-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg><span>Pair 3</span></div><img class="ba-img-before" src="ogródv2_przed.jpeg" alt="Before"><img class="ba-img-after" src="ogródv2_po.jpeg" alt="After"><div class="ba-divider"></div><div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4" /></svg></div><span class="ba-label ba-label-before">Before</span><span class="ba-label ba-label-after">After</span><span class="ba-hint">Hold &amp; drag</span></div><p class="ba-caption">Project 3</p></div>
+                        <div><div class="ba-wrap" data-pair="3"><div class="ba-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg><span>Pair 4</span></div><img class="ba-img-before" src="przed_odnowa.jpeg" alt="Before"><img class="ba-img-after" src="po_odnowie.jpeg" alt="After"><div class="ba-divider"></div><div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4" /></svg></div><span class="ba-label ba-label-before">Before</span><span class="ba-label ba-label-after">After</span><span class="ba-hint">Hold &amp; drag</span></div><p class="ba-caption">Project 4</p></div>
+                        <div><div class="ba-wrap" data-pair="4"><div class="ba-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg><span>Pair 5</span></div><img class="ba-img-before" src="ogródv3_przed.jpeg" alt="Before"><img class="ba-img-after" src="ogródv3_po.jpeg" alt="After"><div class="ba-divider"></div><div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4" /></svg></div><span class="ba-label ba-label-before">Before</span><span class="ba-label ba-label-after">After</span><span class="ba-hint">Hold &amp; drag</span></div><p class="ba-caption">Project 5</p></div>
+                        <div><div class="ba-wrap" data-pair="5"><div class="ba-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg><span>Pair 6</span></div><img class="ba-img-before" src="murekv2_przed.jpeg" alt="Before"><img class="ba-img-after" src="murekv2_po.jpeg" alt="After"><div class="ba-divider"></div><div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4" /></svg></div><span class="ba-label ba-label-before">Before</span><span class="ba-label ba-label-after">After</span><span class="ba-hint">Hold &amp; drag</span></div><p class="ba-caption">Project 6</p></div>
+                        <div><div class="ba-wrap" data-pair="6"><div class="ba-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg><span>Pair 7</span></div><img class="ba-img-before" src="schody_przed.jpeg" alt="Before"><img class="ba-img-after" src="schody_po.jpeg" alt="After"><div class="ba-divider"></div><div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4" /></svg></div><span class="ba-label ba-label-before">Before</span><span class="ba-label ba-label-after">After</span><span class="ba-hint">Hold &amp; drag</span></div><p class="ba-caption">Project 7</p></div>
+                        <div><div class="ba-wrap" data-pair="7"><div class="ba-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg><span>Pair 8</span></div><img class="ba-img-before" src="wejście_przed.jpeg" alt="Before"><img class="ba-img-after" src="wejście_po.jpeg" alt="After"><div class="ba-divider"></div><div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4" /></svg></div><span class="ba-label ba-label-before">Before</span><span class="ba-label ba-label-after">After</span><span class="ba-hint">Hold &amp; drag</span></div><p class="ba-caption">Project 8</p></div>
+                        <div><div class="ba-wrap" data-pair="8"><div class="ba-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg><span>Pair 9</span></div><img class="ba-img-before" src="ogród_przed.jpeg" alt="Before"><img class="ba-img-after" src="ogród_po.jpeg" alt="After"><div class="ba-divider"></div><div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4" /></svg></div><span class="ba-label ba-label-before">Before</span><span class="ba-label ba-label-after">After</span><span class="ba-hint">Hold &amp; drag</span></div><p class="ba-caption">Project 9</p></div>
                     </div>
                 </div>
 
@@ -1629,7 +1597,6 @@
             if (e.key === 'Escape') closeLightbox();
         });
 
-        /* ─── CONTACT FORM ────────────────────────────── */
         /* ─── BEFORE / AFTER SLIDER LOGIC ────────────── */
         function initSlider(wrap) {
             if (wrap._baInited) return;
@@ -1647,8 +1614,7 @@
                 wrap.classList.add('touched');
             }
             wrap.addEventListener('mousedown', e => {
-                e.preventDefault();
-                setPos(e.clientX);
+                e.preventDefault(); setPos(e.clientX);
                 const move = e2 => setPos(e2.clientX);
                 const up = () => { window.removeEventListener('mousemove', move); window.removeEventListener('mouseup', up); };
                 window.addEventListener('mousemove', move);
@@ -1662,10 +1628,9 @@
                 setPos(e.touches[0].clientX);
             }, { passive: true });
         }
-
-        /* ─── INIT ALL SLIDERS ───────────────────── */
         document.querySelectorAll('.ba-wrap').forEach(wrap => initSlider(wrap));
 
+        /* ─── CONTACT FORM ────────────────────────────── */
         function handleSubmit(e) {
             e.preventDefault();
             const form = document.getElementById('contactForm');
