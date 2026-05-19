@@ -1771,19 +1771,49 @@
         initBASliders();
 
         /* ─── CONTACT FORM ────────────────────────────── */
-        function handleSubmit(e) {
+        async function handleSubmit(e) {
             e.preventDefault();
             const form = document.getElementById('contactForm');
             const succ = document.getElementById('formSuccess');
-            /*
-              Wire up a real form submission here.
-              Options:
-                1. WordPress + Contact Form 7: remove this JS and use CF7 shortcode
-                2. Formspree: set form action="https://formspree.io/f/YOUR_ID"
-                3. EmailJS: use emailjs.send(...)
-            */
-            form.style.display = 'none';
-            succ.classList.add('show');
+            const btn = form.querySelector('.form-submit');
+
+            // ── WSTAW SWÓJ ENDPOINT Z FORMSPREE ──────────────────────────────
+            const FORMSPREE_URL = 'https://formspree.io/f/xkoeogeg';
+            // ─────────────────────────────────────────────────────────────────
+
+            btn.disabled = true;
+            btn.style.opacity = '0.6';
+            btn.textContent = 'Sending…';
+
+            try {
+                const res = await fetch(FORMSPREE_URL, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: new FormData(form)
+                });
+
+                if (res.ok) {
+                    form.style.display = 'none';
+                    succ.classList.add('show');
+                } else {
+                    const data = await res.json();
+                    const msg = data?.errors?.map(e => e.message).join(', ') || 'Something went wrong. Please try again.';
+                    alert(msg);
+                    resetBtn(btn);
+                }
+            } catch (err) {
+                alert('Network error — please check your connection and try again.');
+                resetBtn(btn);
+            }
+        }
+
+        function resetBtn(btn) {
+            btn.disabled = false;
+            btn.style.opacity = '';
+            btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg> Send Message`;
         }
     </script>
 </body>
